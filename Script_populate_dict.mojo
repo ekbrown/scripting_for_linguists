@@ -43,8 +43,7 @@ fn get_freqs(in_path: String) raises -> String:
 
 ### main ###
 fn main() raises:
-	# let file_pathway: String = "/pathway/filename.txt"
-    let file_pathway: String = "/Users/ekb5/Downloads/big_badboy.txt"
+	let file_pathway: String = "/pathway/filename.txt"
 
     # run trials for benchmarking purposes
     for i in range(5):
