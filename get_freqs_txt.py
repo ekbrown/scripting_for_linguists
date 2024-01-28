@@ -11,9 +11,13 @@ def push_freqs_dict(freqs, wds):
 
 def get_freqs(in_dir):
     freqs = {}
+    count = 0
     for root, dirs, files in os.walk(in_dir):
         for file in files:
             if file.endswith("txt"):
+                count += 1
+                if count > 10000:
+                    break
                 in_path = os.path.join(root, file)
                 with open(in_path, mode="r", encoding="utf8") as infile:
                     txt = infile.read().upper()
@@ -24,7 +28,7 @@ def get_freqs(in_dir):
 
 if __name__ == "__main__":
     times = []
-    for i in range(10):
+    for i in range(2):
         print("Working on iteration:", i+1)
         t0 = time()
         freqs = get_freqs("/Users/ekb5/Corpora/spotify-podcasts-2020/podcasts-transcripts/txt")

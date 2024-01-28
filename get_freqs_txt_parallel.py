@@ -26,7 +26,7 @@ def get_freqs_dir(in_dir):
     filenames = get_filenames(in_dir)
 
     # parallel processing
-    with Pool(processes = 8) as p:
+    with Pool(processes = 8 ) as p:
         individual_freqs = p.map(get_freqs_file, filenames)  
     
     # flatten the many dictionaries into a single one
@@ -39,10 +39,12 @@ def get_freqs_dir(in_dir):
 
 if __name__ == "__main__":
     times = []
+    in_dir = "/Users/ekb5/Corpora/spotify-podcasts-2020/podcasts-transcripts/txt"
+
     for i in range(10):
         print("Working on iteration:", i+1)
         t0 = time()
-        freqs = get_freqs_dir("/Users/ekb5/Corpora/spotify-podcasts-2020/podcasts-transcripts/txt")
+        freqs = get_freqs_dir(in_dir)
         t1 = time()
         times.append(t1 - t0)
 
