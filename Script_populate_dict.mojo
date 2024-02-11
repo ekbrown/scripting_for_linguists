@@ -43,8 +43,8 @@ fn get_freqs(in_path: String) raises -> String:
 
 ### main ###
 fn main() raises:
-	let file_pathway: String = "/pathway/filename.txt"
-
+    let file_pathway: String = "/pathway/filename.txt"
+    
     # run trials for benchmarking purposes
     for i in range(5):
         print("Mojo is working on iteration", i + 1)
