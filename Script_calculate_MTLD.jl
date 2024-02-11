@@ -103,8 +103,7 @@ function manual_benchmark(file_pathway::String, n_iter = 10)
 end
 
 ### main ###
-file_pathway = "/Users/ekb5/Downloads/big_badboy.txt"
-# file_pathway = "/Users/ekb5/Downloads/input/0a0HuaT4Vm7FoYvccyRRQj.txt"
+file_pathway = "/pathway/to/filename.txt"
 n_iter = 10
 times = manual_benchmark(file_pathway, n_iter)
 times_mean = mean(times)
