@@ -31,8 +31,9 @@ function sub_mtld(wds, threshold, reversed)
     if reversed
         reverse!(wds)
     end
-
+    # println(wds)
     n_wds::Int = length(wds)
+    # println("n_wds: ", n_wds)
 
     terms = Set{String}()
     word_counter = 0
@@ -41,12 +42,17 @@ function sub_mtld(wds, threshold, reversed)
     for w in wds
         word_counter += 1
         push!(terms, w)
+        # println("length(terms): ", length(terms))
         ttr = length(terms) / word_counter
-
+        # println(w)
+        # println("ttr: ", ttr)
         if ttr::Float64 <= threshold::Float64
+            # println("ttr just dropped below the threshold")
             word_counter = 0
             terms = Set{String}()
+            # println("length(term): ", length(terms))
             factor_count += 1
+            # println("current factor_count: ", factor_count)
         end
     end  # next word
 
@@ -62,7 +68,10 @@ function sub_mtld(wds, threshold, reversed)
             factor_count += (1 - ttr) / (1 - threshold)
         end
     end
-    return n_wds / factor_count
+    # println("n_wds: ", n_wds, ", factor_count: ", factor_count)
+    output = n_wds / factor_count
+    # println(output)
+    return output
 end
 
 # define main MTLD function
@@ -103,9 +112,13 @@ function manual_benchmark(file_pathway::String, n_iter = 10)
 end
 
 ### main ###
-file_pathway = "/pathway/to/filename.txt"
-n_iter = 10
+# file_pathway = "/pathway/to/filename.txt"
+file_pathway = "/Users/ekb5/Downloads/input/0a0HuaT4Vm7FoYvccyRRQj.txt"
+# file_pathway = "/Users/ekb5/Downloads/delete.txt"
+# file_pathway = "/Users/ekb5/Downloads/big_badboy.txt"
+
+n_iter = 1
 times = manual_benchmark(file_pathway, n_iter)
 times_mean = mean(times)
 times_median = median(times)
-println("\nOver $n_iter iterations, Julia: mean = $times_mean; median = $times_median\n")
+# println("\nOver $n_iter iterations, Julia: mean = $times_mean; median = $times_median\n")

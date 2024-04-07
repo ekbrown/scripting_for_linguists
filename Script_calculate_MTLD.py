@@ -5,7 +5,8 @@ from time import time
 import statistics
 
 # read in text from file
-in_path = "/pathway/to/filename.txt"
+# in_path = "/pathway/to/filename.txt"
+in_path = "/Users/ekb5/Downloads/input/0a0HuaT4Vm7FoYvccyRRQj.txt"
 with open(in_path) as infile:
     txt = infile.read()
 
