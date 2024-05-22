@@ -13,9 +13,9 @@ def limit_wds(in_wds: list, n_wds: int) -> list:
 	return out_wds
 
 def main():
-	in_file: str = "/Users/ekb5/Downloads/big_badboy.txt"
+	in_file: str = "/pathway/to/big_badboy.txt"
 	all_wds: list = get_wds(in_file)
-	with open("/Users/ekb5/Downloads/times.csv", "w") as outfile:
+	with open("/pathway/to/times_py.csv", "w") as outfile:
 		outfile.write("n_wds,n_keys,the,sec\n")
 		for i in range(100, 230_000_000, 100):
 			print("i =", i)
