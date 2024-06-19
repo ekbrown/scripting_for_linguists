@@ -1,3 +1,6 @@
+# Julia script to create a deeply nested dictionary
+# Julia v.1.10.4
+
 using Dates
 
 function get_words_by_file(in_dir, n_files)
