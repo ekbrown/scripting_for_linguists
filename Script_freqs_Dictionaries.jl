@@ -26,12 +26,13 @@ function get_freqs_dictionary(in_wds)
 end  # function
 
 ### main ###
-txt = open("/path/to/filename.txt") do infile
-    read(infile, String)
+txt = open("/Users/ekb5/Downloads/big_badboy_alphanum.txt") do infile
+# txt = open("/path/to/filename.txt") do infile
+        read(infile, String)
 end
 wds = eachmatch(r"[-'A-Z]+", uppercase(txt))
 
-println("Base Dict():")
-@btime get_freqs_dict(wds)
 println("Dictionaries.jl Dictionary()")
 @btime get_freqs_dictionary(wds)
+println("Base Dict():")
+@btime get_freqs_dict(wds)
