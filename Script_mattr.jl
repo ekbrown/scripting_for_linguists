@@ -28,7 +28,8 @@ txt = open(in_path) do infile
     uppercase(read(infile, String))
 end
 wds = split(txt)
-print(typeof(wds))
+println("number of words = ", length(wds))
+println(typeof(wds))
 open(out_path, "w") do outfile
     write(outfile, "n_wds,lang,sec\n")
     for i in 50:50:10000
