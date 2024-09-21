@@ -1,12 +1,12 @@
 import os, pandas as pd, polars as pl
 from time import time
 
-os.chdir("/pathway/to/dir/")
+os.chdir("/Users/ekb5/Downloads/")
 
-with open("times.csv", 'w') as outfile:
+with open("times2.csv", 'w') as outfile:
     outfile.write("package,iter,sec\n")
 
-    for i in range(100):
+    for i in range(10):
 
         print(f"Working on iteration {i+1}")
 
@@ -14,6 +14,9 @@ with open("times.csv", 'w') as outfile:
         freqs_pd = pd.read_csv("freqs.csv")
         concord_pd = pd.read_csv("concordances.csv")
         t0=time()
+        # concord_pd.set_index("match", inplace=True)
+        # freqs_pd.set_index("wd", inplace=True)
+        # both_pd = concord_pd.join(freqs_pd, how="left")
         both_pd = pd.merge(concord_pd, freqs_pd, left_on='match', right_on="wd", how='left')
         dur_pd = time()-t0
         print(both_pd)
