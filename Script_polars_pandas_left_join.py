@@ -14,10 +14,10 @@ with open("times2.csv", 'w') as outfile:
         freqs_pd = pd.read_csv("freqs.csv")
         concord_pd = pd.read_csv("concordances.csv")
         t0=time()
+        both_pd = pd.merge(concord_pd, freqs_pd, left_on="match", right_on="wd", how="left")
         # concord_pd.set_index("match", inplace=True)
         # freqs_pd.set_index("wd", inplace=True)
         # both_pd = concord_pd.join(freqs_pd, how="left")
-        both_pd = pd.merge(concord_pd, freqs_pd, left_on='match', right_on="wd", how='left')
         dur_pd = time()-t0
         print(both_pd)
         print("Pandas took", dur_pd, "seconds\n")
