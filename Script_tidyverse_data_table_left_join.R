@@ -1,26 +1,14 @@
-library("data.table")
 library("tidyverse")
+setwd("/Users/ekb5/Downloads")
 
-setwd("/pathway/to/dir/")
+times <- read_csv("times.csv") 
+times %>% 
+  ggplot(aes(package, sec))+
+  geom_jitter(height = 0, width = 0.2)+
+  geom_boxplot(alpha = 0.5)+
+  # coord_cartesian(ylim=c(0, 1))+
+  theme_minimal()+
+  labs(x="")
 
-freqs_tidy <- read_csv("freqs.csv")
-concord_tidy <- read_csv("concordances.csv")
-freqs_dt <- fread("freqs.csv")
-concord_dt <- fread("concordances.csv")
-
-# tidyverse
-for (i in 1:100) {
-  
-  ### tidyverse ###
-  t1 <- Sys.time()
-  concord_tidy <- left_join(concord_tidy, freqs_tidy, by = join_by(match == wd))
-  dur_tidy <- Sys.time() - t1
-  cat(str_c("Tidyverse,", i, ",", dur_tidy, "\n", sep = ""), file = "times.csv", append = T)
-  
-  ### data.table ###
-  t2 <- Sys.time()
-  concord_dt[freqs_dt, on = .(match = wd), freq := i.n]
-  dur_dt <- Sys.time() - t2
-  cat(str_c("data.table,", i, ",", dur_dt, "\n", sep = ""), file = "times.csv", append = T)
-  
-}
+m1 <- lm(sec ~ package, data = times)
+aov(m1) %>% TukeyHSD()
