@@ -3,7 +3,7 @@ import re
 import sys
 from time import perf_counter
 #region
-sys.path.append("/Users/ekb5/Documents/Youtube_channel/py_jl_help_each_other/")
+sys.path.append("/pathway/")
 #endregion
 # sys.path.append("pathway/filename.py")
 import my_py_module
@@ -11,13 +11,13 @@ import my_py_module
 from juliacall import Main as jl
 # jl.include("pathway/filename.jl")
 #region
-jl.include("/Users/ekb5/Documents/Youtube_channel/scripting_for_linguists/Script_call_Python_from_Julia.jl")
+jl.include("/pathway/Script_call_Python_from_Julia.jl")
 #endregion
 
 def main():
     #region
-    inpath = "/Users/ekb5/Downloads/war_and_peace.txt"
-    outpath = "/Users/ekb5/Downloads/times_py.csv"
+    inpath = "/pathway/war_and_peace.txt"
+    outpath = "/pathway/times_py.csv"
     #endregion
     with open(inpath) as infile, open(outpath, mode="w") as outfile:
         wds = re.findall(r"[-'’A-Z]+", infile.read().upper())

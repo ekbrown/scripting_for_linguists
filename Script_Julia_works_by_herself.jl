@@ -78,7 +78,7 @@ end
 
 function main()
     #region
-    inpath = "/Users/ekb5/Downloads/war_and_peace.txt"
+    inpath = "/pathway/war_and_peace.txt"
     #endregion
     wds = open(inpath, "r") do infile
         txt = uppercase(read(infile, String))
@@ -86,7 +86,7 @@ function main()
     end
 
     #region
-    outpath = "/Users/ekb5/Downloads/times_jl.csv"
+    outpath = "/pathway/times_jl.csv"
     #endregion
     open(outpath, "w") do outfile
         write(outfile, "iter,lang,task,sec\n")
